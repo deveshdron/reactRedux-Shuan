@@ -1,27 +1,12 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 
 export class Post extends Component {
-  state = {
-    post: null,
-  };
-
-  componentDidMount() {
-    //accessing props object from BrowserRouter
-    let id = this.props.match.params.post_id;
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts/" + id)
-      .then((res) => {
-        console.log(res.data.body);
-        this.setState({ post: res.data });
-      });
-  }
-
   render() {
-    const post = this.state.post ? (
+    const post = this.props.post ? (
       <div className="post container">
-        <h3>{this.state.post.title}</h3>
-        <p>{this.state.post.body}</p>
+        <h3>{this.props.post.title}</h3>
+        <p>{this.props.post.body}</p>
       </div>
     ) : (
       <div className="center">
@@ -33,4 +18,13 @@ export class Post extends Component {
   }
 }
 
-export default Post;
+// mapping our store objects to this component's props
+const mapStateToProps = (state, ownProps) => {
+  //accessing props object from BrowserRouter
+  let id = ownProps.match.params.post_id;
+  return {
+    post: state.posts.find((post) => post.id == id),
+  };
+};
+
+export default connect(mapStateToProps)(Post);
