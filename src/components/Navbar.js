@@ -3,9 +3,9 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
-    setTimeout(() => {
-      this.props.history.push("/about");
-    }, 2000);
+    // setTimeout(() => {
+    //   this.props.history.push("/about");
+    // }, 2000);
 
     return (
       <nav className="teal darken-3 nav-wrapper">
