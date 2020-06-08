@@ -1,18 +1,25 @@
 import React from "react";
 
-const Todo = ({ todos }) => {
-  const todoList = todos.map((todo) => {
-    return <div key={todo.id}>{todo.content}</div>;
-  });
-
-  return (
-    <div className="container">
-      <div>
-        <h3 className="red-text text-darken-2 center">Things to do</h3>
-      </div>
-      {todoList}
-    </div>
+const Todos = ({ todos, deleteTodo }) => {
+  const todoList = todos.length ? (
+    todos.map((todo) => {
+      return (
+        <div className="collection-item" key={todo.id}>
+          <span
+            onClick={() => {
+              deleteTodo(todo.id);
+            }}
+          >
+            {todo.content}
+          </span>
+        </div>
+      );
+    })
+  ) : (
+    <p className="center">No todos left</p>
   );
+
+  return <div className="collection">{todoList}</div>;
 };
 
-export default Todo;
+export default Todos;
