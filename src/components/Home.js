@@ -29,7 +29,22 @@ class Home extends Component {
         );
       })
     ) : (
-      <div className="center"> No post yet </div>
+      <div className="center">
+        <h5>No post yet...</h5>
+        <div className="preloader-wrapper big active">
+          <div className="spinner-layer spinner-blue-only">
+            <div className="circle-clipper left">
+              <div className="circle"></div>
+            </div>
+            <div className="gap-patch">
+              <div className="circle"></div>
+            </div>
+            <div className="circle-clipper right">
+              <div className="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
     return (
       <div className="Home container">
