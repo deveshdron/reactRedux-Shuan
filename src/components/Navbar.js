@@ -1,19 +1,25 @@
 import React, { Component } from "react";
+import { Link, NavLink, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
+    setTimeout(() => {
+      this.props.history.push("/about");
+    }, 2000);
+
     return (
       <nav className="teal darken-3 nav-wrapper">
         <div className="container">
+          <a className="brand-logo left">Poke'Times</a>
           <ul className="right">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/about">About</a>
+              <NavLink to="/about">About</NavLink>
             </li>
             <li>
-              <a href="/contact">Contact</a>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
           </ul>
         </div>
@@ -22,4 +28,5 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+// using higher order component of BrowserRouter
+export default withRouter(Navbar);
