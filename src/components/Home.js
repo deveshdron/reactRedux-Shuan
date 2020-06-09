@@ -24,6 +24,7 @@ class Home extends Component {
         );
       })
     ) : (
+      // adding spinner
       <div className="center">
         <h5>No post yet...</h5>
         <div className="preloader-wrapper big active">
